@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .weather-app {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .weather-result {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            display: none;
+        }
+        .weather-icon {
+            font-size: 40px;
+            text-align: center;
+            margin: 10px 0;
+        }
+        .weather-details {
+            display: flex;
+            justify-content: space-between;
+        }
+        .weather-details div {
+            text-align: center;
+            padding: 10px;
+            width: 30%;
+        }
+        .error {
+            color: red;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="weather-app">
+        <h1>Weather Forecast</h1>
+        
+        <div class="form-group">
+            <label for="city">City:</label>
+            <input type="text" id="city" placeholder="Enter city name">
+        </div>
+        
+        <div class="form-group">
+            <label for="country">Country:</label>
+            <select id="country">
+                <option value="">Select country</option>
+                <option value="US">United States</option>
+                <option value="UK">United Kingdom</option>
+                <option value="CA">Canada</option>
+                <option value="AU">Australia</option>
+                <option value="FR">France</option>
+                <option value="DE">Germany</option>
+                <option value="JP">Japan</option>
+                <option value="BR">Brazil</option>
+                <option value="IN">India</option>
+                <option value="CN">China</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="days">Days to forecast:</label>
+            <select id="days">
+                <option value="1">Today</option>
+                <option value="3">3 Days</option>
+                <option value="5">5 Days</option>
+                <option value="7">7 Days</option>
+            </select>
+        </div>
+        
+        <button id="getWeather">Get Weather</button>
+        
+        <div class="error" id="error-message"></div>
+        
+        <div class="weather-result" id="weather-result">
+            <h2 id="location">Weather for <span id="location-name">City</span></h2>
+            
+            <div class="weather-icon">
+                <span id="weather-icon">☀️</span>
+            </div>
+            
+            <div class="weather-description">
+                <p id="weather-description">Sunny</p>
+            </div>
+            
+            <div class="weather-details">
+                <div>
+                    <h3>Temperature</h3>
+                    <p id="temperature">25°C</p>
+                </div>
+                <div>
+                    <h3>Humidity</h3>
+                    <p id="humidity">65%</p>
+                </div>
+                <div>
+                    <h3>Wind</h3>
+                    <p id="wind">10 km/h</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('getWeather').addEventListener('click', function() {
+            const city = document.getElementById('city').value.trim();
+            const country = document.getElementById('country').value;
+            const days = document.getElementById('days').value;
+            
+            // Reset error message
+            const errorMessage = document.getElementById('error-message');
+            errorMessage.style.display = 'none';
+            
+            // Validate inputs
+            if (city === '') {
+                errorMessage.textContent = 'Please enter a city name';
+                errorMessage.style.display = 'block';
+                return;
+            }
+            
+            if (country === '') {
+                errorMessage.textContent = 'Please select a country';
+                errorMessage.style.display = 'block';
+                return;
+            }
+            
+            // Show weather result (in a real app, this would come from an API)
+            const weatherResult = document.getElementById('weather-result');
+            weatherResult.style.display = 'block';
+            
+            // Update weather data with mock data
+            document.getElementById('location-name').textContent = city + ', ' + country;
+            
+            // Set random weather data for demo purposes
+            const weatherTypes = ['☀️ Sunny', '⛅ Partly Cloudy', '☁️ Cloudy', '🌧️ Rainy', '⛈️ Stormy', '❄️ Snowy'];
+            const randomWeather = weatherTypes[Math.floor(Math.random() * weatherTypes.length)];
+            const randomTemp = Math.floor(Math.random() * 35) + 5;
+            const randomHumidity = Math.floor(Math.random() * 60) + 30;
+            const randomWind = Math.floor(Math.random() * 30) + 5;
+            
+            document.getElementById('weather-icon').textContent = randomWeather.split(' ')[0];
+            document.getElementById('weather-description').textContent = randomWeather.split(' ')[1];
+            document.getElementById('temperature').textContent = randomTemp + '°C';
+            document.getElementById('humidity').textContent = randomHumidity + '%';
+            document.getElementById('wind').textContent = randomWind + ' km/h';
+        });
+    </script>
+</body>
+</html>
