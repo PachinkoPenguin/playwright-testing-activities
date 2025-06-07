@@ -1,6 +1,19 @@
 # Playwright Testing Activities
 
-This repository contains four Playwright testing activities for learning web automation testing.
+![Playwright Logo](https://playwright.dev/img/playwright-logo.svg)
+
+This repository contains four Playwright testing activities for learning web automation testing. These hands-on exercises will help you master essential Playwright concepts including parameterized testing, video recording, test generation with Codegen, and Playwright Inspector.
+
+[![GitHub stars](https://img.shields.io/github/stars/PachinkoPenguin/playwright-testing-activities?style=social)](https://github.com/PachinkoPenguin/playwright-testing-activities/stargazers)
+[![GitHub license](https://img.shields.io/github/license/PachinkoPenguin/playwright-testing-activities)](https://github.com/PachinkoPenguin/playwright-testing-activities/blob/main/LICENSE)
+[![Playwright Version](https://img.shields.io/badge/playwright-v1.52.0-brightgreen)](https://playwright.dev/)
+
+## Key Features
+
+- **Activity 1**: Parameterized testing against GitHub login
+- **Activity 2**: Recording videos of test execution
+- **Activity 3**: Generating tests with Playwright Codegen
+- **Activity 4**: Using Playwright Inspector for test creation
 
 ## Prerequisites
 
